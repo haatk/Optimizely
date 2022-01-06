@@ -1,8 +1,10 @@
 ﻿using EPiServer.Cms.UI.AspNetIdentity;
+using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 namespace Optimizely.API
@@ -31,6 +33,8 @@ namespace Optimizely.API
             {
                 options.LoginPath = "/util/Login";
             });
+            
+            services.TryAddEnumerable(ServiceDescriptor.Singleton(typeof(IFirstRequestInitializer), typeof(UsersInstaller)));
         }
 
 
