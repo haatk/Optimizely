@@ -27,7 +27,8 @@ namespace Optimizely.API
 
             services.AddMvc();
             services.AddCms()
-                .AddCmsAspNetIdentity<ApplicationUser>();
+                .AddCmsAspNetIdentity<ApplicationUser>()
+                .AddContentDeliveryApi(options => options.SiteDefinitionApiEnabled = true); // TODO: Set AllowedScopes and RequiredRoles
 
             services.ConfigureApplicationCookie(options =>
             {
